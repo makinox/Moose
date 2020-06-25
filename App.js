@@ -1,11 +1,11 @@
 import React from 'react';
-import {BottomNavigation, Text} from 'react-native-paper';
+import {StatusBar} from 'react-native';
+import {BottomNavigation} from 'react-native-paper';
 import Dashboard from './src/pages/dashboard/dashboard';
+import Favorites from './src/pages/favorites/favorites';
 
 const MusicRoute = () => <Dashboard />;
-// const MusicRoute = () => <Text>Music</Text>;
-const AlbumsRoute = () => <Text>Albums</Text>;
-// const RecentsRoute = () => <Text>Recents</Text>;
+const AlbumsRoute = () => <Favorites />;
 const theme = {
   colors: {
     bg1: '#ffffff',
@@ -18,16 +18,19 @@ export default class MyComponent extends React.Component {
     routes: [
       {badge: false, key: 'home', title: 'Home', color: '#ffffff', icon: 'home-outline'},
       {badge: false, key: 'favorite', title: 'Favorite', color: '#d81b60', icon: 'heart-outline'},
-      // {key: 'recents', title: 'Recents', icon: 'history'},
     ],
+    barStyle: ['dark-content', 'ligth-content'],
   };
 
-  _handleIndexChange = index => this.setState({index});
+  _handleIndexChange = index => {
+    this.setState({index});
+    StatusBar.setBackgroundColor(this.state.routes[index].color, true);
+    StatusBar.setBarStyle(this.state.barStyle[index]);
+  };
 
   _renderScene = BottomNavigation.SceneMap({
     home: MusicRoute,
     favorite: AlbumsRoute,
-    // recents: RecentsRoute,
   });
 
   render() {

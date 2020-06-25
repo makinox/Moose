@@ -14,11 +14,11 @@ const Dashboard = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={bg1} />
+      <StatusBar backgroundColor={bg1} barStyle="dark-content" />
       {/* {console.log(theme.colors)} */}
       <Appbar.Header style={{backgroundColor: bg1}}>
         <Appbar.Content title="Muse" />
-        <Appbar.Action icon="dots-vertical" onPress={() => {}} />
+        {/* <Appbar.Action icon="dots-vertical" onPress={() => {}} /> */}
       </Appbar.Header>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollSection}>
