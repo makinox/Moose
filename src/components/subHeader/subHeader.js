@@ -1,10 +1,14 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Title} from 'react-native-paper';
+import {Title, Avatar, Text} from 'react-native-paper';
 import styles from './styles';
 
 export default ({title}) => (
-  <View>
-    <Title style={styles.subHeader}>{title}</Title>
+  <View style={styles.subHeader}>
+    <Avatar.Text size={40} label="XD" style={styles.subAvatar} />
+    <View>
+      <Title style={styles.title}>{title}</Title>
+      <Text style={styles.subTitle}>Subtitulo</Text>
+    </View>
   </View>
 );
