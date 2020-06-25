@@ -1,18 +1,10 @@
 import React from 'react';
 import {StatusBar, ScrollView, SafeAreaView, StyleSheet} from 'react-native';
-import {Appbar, withTheme, Card, Title, Paragraph} from 'react-native-paper';
+import {Appbar, withTheme} from 'react-native-paper';
+import {SubHeader, DashCard, CardContainer} from '../../components';
 
-const DashCard = ({title, subtitle}) => (
-  <Card style={styles.card}>
-    <Card.Content>
-      <Title>{title}</Title>
-      <Paragraph>{subtitle}</Paragraph>
-    </Card.Content>
-  </Card>
-);
-
-const Dashboard = ({theme}) => {
-  const bg1 = '#131830';
+const Dashboard = () => {
+  const bg1 = '#3AB234';
   const info = [
     {title: 'Primera', subtitle: 'Prime', img: 'img.com'},
     {title: 'Senconda', subtitle: 'Second', img: 'img.com'},
@@ -29,10 +21,33 @@ const Dashboard = ({theme}) => {
         <Appbar.Action icon="dots-vertical" onPress={() => {}} />
       </Appbar.Header>
       <SafeAreaView style={styles.container}>
-        <ScrollView horizontal={true}>
-          {info.map((el, idx) => (
-            <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
-          ))}
+        <ScrollView style={styles.scrollSection}>
+          <CardContainer>
+            <SubHeader title="Mas populares" />
+            <ScrollView horizontal={true}>
+              {info.map((el, idx) => (
+                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+              ))}
+            </ScrollView>
+          </CardContainer>
+
+          <CardContainer>
+            <SubHeader title="Mas nuevas" />
+            <ScrollView horizontal={true}>
+              {info.map((el, idx) => (
+                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+              ))}
+            </ScrollView>
+          </CardContainer>
+
+          <CardContainer>
+            <SubHeader title="Mas bonitas" />
+            <ScrollView horizontal={true}>
+              {info.map((el, idx) => (
+                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+              ))}
+            </ScrollView>
+          </CardContainer>
         </ScrollView>
       </SafeAreaView>
     </>
@@ -43,12 +58,9 @@ export default withTheme(Dashboard);
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
   },
-  card: {
-    marginTop: 10,
-    marginRight: 5,
-    marginLeft: 5,
-    marginBottom: 10,
+  scrollSection: {
+    paddingTop: 20,
   },
 });
