@@ -4,7 +4,7 @@ import {Appbar, withTheme} from 'react-native-paper';
 import {SubHeader, DashCard, CardContainer} from '../../components';
 
 const Dashboard = () => {
-  const bg1 = '#3AB234';
+  const bg1 = '#ffffff';
   const info = [
     {title: 'Primera', subtitle: 'Prime', img: 'img.com'},
     {title: 'Senconda', subtitle: 'Second', img: 'img.com'},
