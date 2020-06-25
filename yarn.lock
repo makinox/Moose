@@ -4953,6 +4953,11 @@ react-native-vector-icons@^6.6.0:
     prop-types "^15.6.2"
     yargs "^13.2.2"
 
+react-native-vibrant-color@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-vibrant-color/-/react-native-vibrant-color-4.0.0.tgz#510726d237bc56329900ac9b53a62d4c9937b441"
+  integrity sha512-3Z4gIy5sdbcfHTXUSyMw44+9lTM+RKtBXO/8lngn+pBNjmMs2ceAi1qySDjUR4nfCaLky/DMciX9FUnOhFMyYw==
+
 react-native@0.62.2:
   version "0.62.2"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.62.2.tgz#d831e11a3178705449142df19a70ac2ca16bad10"

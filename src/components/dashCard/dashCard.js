@@ -1,16 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image} from 'react-native';
 import styles from './styles';
+import {colorsFromUrl} from 'react-native-vibrant-color';
 
-export default ({image}) => (
-  <View style={styles.card}>
-    <Image style={styles.cover} source={{uri: image}} />
-  </View>
-  // <Card style={styles.card}>
-  //   <Card.Cover style={styles.cover} source={{uri: 'https://picsum.photos/id/1056/150/180'}} />
-  //   <Card.Content>
-  //     <Title style={styles.title}>{title}</Title>
-  //     <Paragraph style={styles.subtitle}>{subtitle}</Paragraph>
-  //   </Card.Content>
-  // </Card>
-);
+export default ({image}) => {
+  const [color, useColor] = useState([]);
+  useEffect(() => {
+    colorsFromUrl(image).then(colors => useColor(colors));
+  }, [image]);
+
+  return (
+    <View
+      style={{
+        marginTop: 10,
+        marginRight: 5,
+        marginLeft: 20,
+        marginBottom: 10,
+        borderRadius: 20,
+        borderWidth: 2,
+        borderColor: color.dominantColor,
+      }}>
+      <Image style={styles.cover} source={{uri: image}} />
+    </View>
+  );
+};
