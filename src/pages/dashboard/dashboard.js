@@ -6,10 +6,10 @@ import {SubHeader, DashCard, CardContainer} from '../../components';
 const Dashboard = () => {
   const bg1 = '#ffffff';
   const info = [
-    {title: 'Primera', subtitle: 'Prime', img: 'img.com'},
-    {title: 'Senconda', subtitle: 'Second', img: 'img.com'},
-    {title: 'Senconda', subtitle: 'Second', img: 'img.com'},
-    {title: 'Senconda', subtitle: 'Second', img: 'img.com'},
+    {title: 'Primera', subtitle: 'Prime', img: 'https://picsum.photos/id/1056/150/180'},
+    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1001/150/180'},
+    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1000/150/180'},
+    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1013/150/180'},
   ];
 
   return (
@@ -26,7 +26,7 @@ const Dashboard = () => {
             <SubHeader title="Mas populares" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+                <DashCard key={idx} image={el.img} />
               ))}
             </ScrollView>
           </CardContainer>
@@ -35,7 +35,7 @@ const Dashboard = () => {
             <SubHeader title="Mas nuevas" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+                <DashCard key={idx} image={el.img} />
               ))}
             </ScrollView>
           </CardContainer>
@@ -44,7 +44,7 @@ const Dashboard = () => {
             <SubHeader title="Mas bonitas" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} title={el.title} subtitle={el.subtitle} />
+                <DashCard key={idx} image={el.img} />
               ))}
             </ScrollView>
           </CardContainer>
