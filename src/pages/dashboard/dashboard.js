@@ -1,7 +1,8 @@
 import React from 'react';
-import {StatusBar, ScrollView, SafeAreaView, StyleSheet} from 'react-native';
+import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
 import {Appbar, withTheme} from 'react-native-paper';
 import {SubHeader, DashCard, CardContainer} from '../../components';
+import styles from './styles';
 
 const Dashboard = () => {
   const bg1 = '#ffffff';
@@ -16,7 +17,7 @@ const Dashboard = () => {
     <>
       <StatusBar backgroundColor={bg1} barStyle="dark-content" />
       {/* {console.log(theme.colors)} */}
-      <Appbar.Header style={{backgroundColor: bg1}}>
+      <Appbar.Header style={styles.header}>
         <Appbar.Content title="Muse" />
         {/* <Appbar.Action icon="dots-vertical" onPress={() => {}} /> */}
       </Appbar.Header>
@@ -55,12 +56,3 @@ const Dashboard = () => {
 };
 
 export default withTheme(Dashboard);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollSection: {
-    paddingTop: 20,
-  },
-});
