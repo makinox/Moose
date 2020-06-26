@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  card: {marginTop: 10, marginRight: 5, marginLeft: 20, marginBottom: 10, borderRadius: 20, elevation: 4},
   title: {
     color: '#ffffff',
   },
@@ -11,9 +12,5 @@ export default StyleSheet.create({
     height: 150,
     width: 180,
     borderRadius: 20,
-    // borderTopRightRadius: 20,
-    // borderBottomRightRadius: 10,
-    // borderBottomLeftRadius: 10,
-    // borderTopLeftRadius: 20,
   },
 });
