@@ -12,6 +12,7 @@ const Dashboard = ({navigation}) => {
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1000/150/180'},
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1013/150/180'},
   ];
+  const handleRoute = () => navigation.navigate('Art');
 
   return (
     <>
@@ -25,7 +26,7 @@ const Dashboard = ({navigation}) => {
             <SubHeader title="Mas populares" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} image={el.img} handlePress={() => console.log(navigation.navigate('Favorites'))} />
+                <DashCard key={idx} image={el.img} handlePress={handleRoute} />
               ))}
             </ScrollView>
           </CardContainer>

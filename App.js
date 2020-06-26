@@ -1,13 +1,21 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {StatusBar} from 'react-native';
-import {Dashboard, Favorites} from './src/pages';
+import {Dashboard, Favorites, Artboard} from './src/pages';
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 const colorList = [{color: '#ffffff', content: 'dark-content'}, {color: '#d81b60', content: 'ligth-content'}];
+const Home = () => (
+  <Stack.Navigator initialRouteName="Dashboard">
+    <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown: false}} />
+    <Stack.Screen name="Art" component={Artboard} />
+  </Stack.Navigator>
+);
 
 export default () => {
   const [index, useIndex] = React.useState(0);
@@ -16,7 +24,7 @@ export default () => {
       <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: colorList[index].color}}>
         <Tab.Screen
           name="Home"
-          component={Dashboard}
+          component={Home}
           options={{
             tabBarIcon: ({color}) => <MaterialCommunityIcons name="home-outline" color={color} size={26} />,
           }}
@@ -46,39 +54,3 @@ export default () => {
     </NavigationContainer>
   );
 };
-
-// class MyComponent extends React.Component {
-//   state = {
-//     index: 0,
-//     routes: [
-//       {badge: false, key: 'home', title: 'Home', color: '#ffffff', icon: 'home-outline'},
-//       {badge: false, key: 'favorite', title: 'Favorite', color: '#d81b60', icon: 'heart-outline'},
-//     ],
-//     barStyle: ['dark-content', 'ligth-content'],
-//   };
-
-//   _handleIndexChange = index => {
-//     this.setState({index});
-//     StatusBar.setBackgroundColor(this.state.routes[index].color, true);
-//     StatusBar.setBarStyle(this.state.barStyle[index]);
-//   };
-
-//   _renderScene = BottomNavigation.SceneMap({
-//     home: MusicRoute,
-//     favorite: AlbumsRoute,
-//   });
-
-//   render() {
-//     return (
-//       <BottomNavigation
-//         theme={theme}
-//         barStyle={{backgroundColor: this.state.routes[this.state.index].color}}
-//         // labeled={false}
-//         shifting={true}
-//         navigationState={this.state}
-//         onIndexChange={this._handleIndexChange}
-//         renderScene={this._renderScene}
-//       />
-//     );
-//   }
-// }
