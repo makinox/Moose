@@ -1,16 +1,12 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {StatusBar} from 'react-native';
-import Dashboard from './src/pages/dashboard/dashboard';
-import Favorites from './src/pages/favorites/favorites';
+import {Dashboard, Favorites} from './src/pages';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
-
-const DashboardRoute = () => <Dashboard />;
-const FavsRoute = () => <Favorites />;
 const colorList = [{color: '#ffffff', content: 'dark-content'}, {color: '#d81b60', content: 'ligth-content'}];
 
 export default () => {
@@ -20,7 +16,7 @@ export default () => {
       <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: colorList[index].color}}>
         <Tab.Screen
           name="Home"
-          component={DashboardRoute}
+          component={Dashboard}
           options={{
             tabBarIcon: ({color}) => <MaterialCommunityIcons name="home-outline" color={color} size={26} />,
           }}
@@ -33,8 +29,8 @@ export default () => {
           })}
         />
         <Tab.Screen
-          name="Settings"
-          component={FavsRoute}
+          name="Favorites"
+          component={Favorites}
           options={{
             tabBarIcon: ({color}) => <MaterialCommunityIcons name="heart-outline" color={color} size={26} />,
           }}

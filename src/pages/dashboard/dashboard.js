@@ -4,7 +4,7 @@ import {Appbar, withTheme} from 'react-native-paper';
 import {SubHeader, DashCard, CardContainer} from '../../components';
 import styles from './styles';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
   const bg1 = '#ffffff';
   const info = [
     {title: 'Primera', subtitle: 'Prime', img: 'https://picsum.photos/id/1056/150/180'},
@@ -16,10 +16,8 @@ const Dashboard = () => {
   return (
     <>
       <StatusBar backgroundColor={bg1} barStyle="dark-content" />
-      {/* {console.log(theme.colors)} */}
       <Appbar.Header style={styles.header}>
         <Appbar.Content title="Muse" />
-        {/* <Appbar.Action icon="dots-vertical" onPress={() => {}} /> */}
       </Appbar.Header>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollSection}>
@@ -27,7 +25,7 @@ const Dashboard = () => {
             <SubHeader title="Mas populares" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} image={el.img} />
+                <DashCard key={idx} image={el.img} handlePress={() => console.log(navigation.navigate('Favorites'))} />
               ))}
             </ScrollView>
           </CardContainer>
