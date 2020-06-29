@@ -18,7 +18,7 @@ const Favorites = ({navigation}) => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      StatusBar.setBackgroundColor('#d81b60', true);
+      StatusBar.setBackgroundColor(bg1, true);
     });
     return unsubscribe;
   }, [navigation]);

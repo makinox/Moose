@@ -2,17 +2,19 @@ import React, {useState, useEffect} from 'react';
 import styles from './styles';
 import {SubHeader} from '../../components';
 import {Text, FAB} from 'react-native-paper';
+import {AppContext} from '../../utils/context';
+import {colorsFromUrl} from 'react-native-vibrant-color';
 import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView, View, Image, ScrollView, StatusBar} from 'react-native';
-import {colorsFromUrl} from 'react-native-vibrant-color';
 
 export default ({route, navigation}) => {
-  // console.log(route.params.img);
+  const {useCol} = React.useContext(AppContext);
   const [cols, useCols] = useState(['#ffffff', '#ffffff']);
   const updateCols = () => {
     colorsFromUrl(route.params.img).then(colors => {
       useCols([colors.averageColor, colors.dominantColor, colors.vibrantColor, colors.darkVibrantColor]);
       StatusBar.setBackgroundColor(colors.averageColor, true);
+      useCol(colors.darkVibrantColor);
     });
   };
   useEffect(() => {

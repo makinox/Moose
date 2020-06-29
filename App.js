@@ -3,12 +3,12 @@ import * as React from 'react';
 import {Dashboard, Favorites, Artboard} from './src/pages';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {AppProvider, AppContext} from './src/utils/context';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
-const colorList = [{color: '#ffffff', content: 'dark-content'}, {color: '#d81b60', content: 'ligth-content'}];
 
 const Home = () => (
   <Stack.Navigator initialRouteName="Dashboard">
@@ -18,9 +18,10 @@ const Home = () => (
 );
 
 const TabNav = () => {
-  const [index, useIndex] = React.useState(0);
+  const {col, useCol} = React.useContext(AppContext);
+  console.log(col);
   return (
-    <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: colorList[index].color}}>
+    <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: col}}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -29,7 +30,7 @@ const TabNav = () => {
         }}
         listeners={() => ({
           focus: () => {
-            useIndex(0);
+            useCol('#ffffff');
           },
         })}
       />
@@ -41,7 +42,7 @@ const TabNav = () => {
         }}
         listeners={() => ({
           focus: () => {
-            useIndex(1);
+            useCol('#d81b60');
           },
         })}
       />
@@ -50,7 +51,9 @@ const TabNav = () => {
 };
 
 export default () => (
-  <NavigationContainer>
-    <TabNav />
-  </NavigationContainer>
+  <AppProvider>
+    <NavigationContainer>
+      <TabNav />
+    </NavigationContainer>
+  </AppProvider>
 );

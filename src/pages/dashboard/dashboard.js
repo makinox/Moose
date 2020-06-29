@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
-import {Appbar, withTheme} from 'react-native-paper';
-import {SubHeader, DashCard, CardContainer} from '../../components';
 import styles from './styles';
+import {AppContext} from '../../utils/context';
+import {Appbar, withTheme} from 'react-native-paper';
+import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
+import {SubHeader, DashCard, CardContainer} from '../../components';
 
 const Dashboard = ({navigation}) => {
   const bg1 = '#ffffff';
@@ -13,10 +14,12 @@ const Dashboard = ({navigation}) => {
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1013/150/180'},
   ];
   const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
+  const {useCol} = React.useContext(AppContext);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      StatusBar.setBackgroundColor('#ffffff', true);
+      StatusBar.setBackgroundColor(bg1, true);
+      useCol(bg1);
     });
     return unsubscribe;
   }, [navigation]);
