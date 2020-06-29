@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {StatusBar} from 'react-native';
 import {Dashboard, Favorites, Artboard} from './src/pages';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -13,7 +12,7 @@ const colorList = [{color: '#ffffff', content: 'dark-content'}, {color: '#d81b60
 const Home = () => (
   <Stack.Navigator initialRouteName="Dashboard">
     <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown: false}} />
-    <Stack.Screen name="Art" component={Artboard} />
+    <Stack.Screen name="Art" component={Artboard} options={{headerTransparent: true, headerTitle: ''}} />
   </Stack.Navigator>
 );
 
@@ -29,10 +28,8 @@ export default () => {
             tabBarIcon: ({color}) => <MaterialCommunityIcons name="home-outline" color={color} size={26} />,
           }}
           listeners={() => ({
-            tabPress: e => {
+            tabPress: () => {
               useIndex(0);
-              StatusBar.setBackgroundColor(colorList[0].color, true);
-              StatusBar.setBarStyle(colorList[0].content);
             },
           })}
         />
@@ -43,10 +40,8 @@ export default () => {
             tabBarIcon: ({color}) => <MaterialCommunityIcons name="heart-outline" color={color} size={26} />,
           }}
           listeners={() => ({
-            tabPress: e => {
+            tabPress: () => {
               useIndex(1);
-              StatusBar.setBackgroundColor(colorList[1].color, true);
-              StatusBar.setBarStyle(colorList[1].content);
             },
           })}
         />

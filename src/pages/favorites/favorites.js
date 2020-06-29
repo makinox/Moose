@@ -1,10 +1,10 @@
-import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import {Appbar, withTheme} from 'react-native-paper';
 import DashCard from '../../components/dashCard/dashCard';
 import styles from '../favorites/styles';
 
-const Favorites = () => {
+const Favorites = ({navigation}) => {
   const bg1 = '#d81b60';
   const info = [
     {title: 'Primera', subtitle: 'Prime', img: 'https://picsum.photos/id/1056/150/180'},
@@ -14,6 +14,13 @@ const Favorites = () => {
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1015/150/180'},
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1019/150/180'},
   ];
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      StatusBar.setBackgroundColor('#d81b60', true);
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <>
