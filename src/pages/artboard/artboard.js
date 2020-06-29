@@ -1,47 +1,40 @@
 import React from 'react';
-import {SafeAreaView, View, Image, StyleSheet} from 'react-native';
+import {SafeAreaView, View, Image, ScrollView} from 'react-native';
 import {Text, FAB} from 'react-native-paper';
 import {SubHeader} from '../../components';
+import styles from './styles';
 
-export default ({route, navigation}) => {
+export default ({route}) => {
   console.log(route.params.img);
-  // const _goBack = () => navigation.goBack();
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      {/* <Appbar.Header>
-        <Appbar.BackAction onPress={_goBack} />
-      </Appbar.Header> */}
-      <SubHeader title="El nombre elegido" />
-      <View>
-        <Image style={styles.cover} source={{uri: route.params.img}} />
-      </View>
-      <View>
-        <Text>Titulo de la imagen</Text>
-        <Text>Subtitulo de la imagen</Text>
-      </View>
-      <View style={{flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View>
-          <FAB icon="heart-outline" />
-          <Text>Favicon</Text>
+    <SafeAreaView style={styles.safe}>
+      <ScrollView>
+        <View style={styles.headerContainer}>
+          <SubHeader title="El nombre elegido" />
         </View>
-        <View>
-          <FAB icon="download" />
-          <Text>Descargar</Text>
+        <View style={styles.coverContainer}>
+          <Image style={styles.cover} source={{uri: route.params.img}} />
         </View>
-        <View>
-          <FAB icon="account-outline" />
-          <Text>Perfil</Text>
+        <View style={styles.artTitleContainer}>
+          <Text style={styles.artTitle}>Titulo de la imagen</Text>
+          <Text style={styles.artSubtitle}>Subtitulo de la imagen</Text>
         </View>
-      </View>
+        <View style={styles.buttonContainer}>
+          <View style={styles.activeButton}>
+            <FAB icon="heart-outline" />
+            <Text style={styles.activeText}>Favicon</Text>
+          </View>
+          <View style={styles.activeButton}>
+            <FAB icon="download" />
+            <Text style={styles.activeText}>Descargar</Text>
+          </View>
+          <View style={styles.activeButton}>
+            <FAB icon="account-outline" />
+            <Text style={styles.activeText}>Perfil</Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  cover: {
-    height: 300,
-    width: 300,
-    borderRadius: 20,
-  },
-});

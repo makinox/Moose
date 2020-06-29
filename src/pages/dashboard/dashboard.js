@@ -35,7 +35,7 @@ const Dashboard = ({navigation}) => {
             <SubHeader title="Mas nuevas" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} image={el.img} />
+                <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
               ))}
             </ScrollView>
           </CardContainer>
@@ -44,7 +44,7 @@ const Dashboard = ({navigation}) => {
             <SubHeader title="Mas bonitas" />
             <ScrollView horizontal={true}>
               {info.map((el, idx) => (
-                <DashCard key={idx} image={el.img} />
+                <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
               ))}
             </ScrollView>
           </CardContainer>
