@@ -27,4 +27,7 @@ export default StyleSheet.create({
   activeText: {
     marginTop: 20,
   },
+  activeFab: {
+    backgroundColor: '#ffffff',
+  },
 });
