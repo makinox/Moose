@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableWithoutFeedback} from 'react-native';
 import styles from './styles';
 
 export default ({image, handlePress}) => {
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableWithoutFeedback onPress={handlePress}>
       <View style={styles.card}>
-        <Image pres style={styles.cover} source={{uri: image}} />
+        <Image style={styles.cover} source={{uri: image}} />
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
