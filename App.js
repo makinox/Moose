@@ -9,6 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 const colorList = [{color: '#ffffff', content: 'dark-content'}, {color: '#d81b60', content: 'ligth-content'}];
+
 const Home = () => (
   <Stack.Navigator initialRouteName="Dashboard">
     <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown: false}} />
@@ -16,36 +17,40 @@ const Home = () => (
   </Stack.Navigator>
 );
 
-export default () => {
+const TabNav = () => {
   const [index, useIndex] = React.useState(0);
   return (
-    <NavigationContainer>
-      <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: colorList[index].color}}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarIcon: ({color}) => <MaterialCommunityIcons name="home-outline" color={color} size={26} />,
-          }}
-          listeners={() => ({
-            tabPress: () => {
-              useIndex(0);
-            },
-          })}
-        />
-        <Tab.Screen
-          name="Favorites"
-          component={Favorites}
-          options={{
-            tabBarIcon: ({color}) => <MaterialCommunityIcons name="heart-outline" color={color} size={26} />,
-          }}
-          listeners={() => ({
-            tabPress: () => {
-              useIndex(1);
-            },
-          })}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: colorList[index].color}}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({color}) => <MaterialCommunityIcons name="home-outline" color={color} size={26} />,
+        }}
+        listeners={() => ({
+          focus: () => {
+            useIndex(0);
+          },
+        })}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={Favorites}
+        options={{
+          tabBarIcon: ({color}) => <MaterialCommunityIcons name="heart-outline" color={color} size={26} />,
+        }}
+        listeners={() => ({
+          focus: () => {
+            useIndex(1);
+          },
+        })}
+      />
+    </Tab.Navigator>
   );
 };
+
+export default () => (
+  <NavigationContainer>
+    <TabNav />
+  </NavigationContainer>
+);

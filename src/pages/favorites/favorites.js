@@ -14,6 +14,7 @@ const Favorites = ({navigation}) => {
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1015/150/180'},
     {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1019/150/180'},
   ];
+  const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -30,7 +31,7 @@ const Favorites = ({navigation}) => {
       <SafeAreaView style={styles.safe}>
         <ScrollView contentContainerStyle={styles.container}>
           {info.map((el, idx) => (
-            <DashCard key={idx} image={el.img} />
+            <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
           ))}
         </ScrollView>
       </SafeAreaView>
