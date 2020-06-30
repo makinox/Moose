@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView, View, Image, ScrollView, StatusBar} from 'react-native';
 
 export default ({route, navigation}) => {
-  const {useCol, fav, useFav} = React.useContext(AppContext);
+  const {useCol, fav, addFav, deleteFav} = React.useContext(AppContext);
   const [cols, useCols] = useState(['#ffffff', '#ffffff']);
   const [voted, useVoted] = useState(false);
   const updateCols = () => {
@@ -19,20 +19,15 @@ export default ({route, navigation}) => {
     });
   };
   const addFavorite = () => {
-    const newFav = fav;
-    newFav.push(route.params);
-    useFav(newFav);
+    addFav(route.params);
     useVoted(true);
   };
   const deleteFavorite = () => {
-    const result = fav.filter(el => el.id !== route.params.id);
-    // console.log({delete: true, result});
-    useFav(result);
+    deleteFav(route.params);
     useVoted(false);
   };
   const favState = () => {
     const result = fav.filter(el => el.id === route.params.id);
-    // console.log(result.length);
     if (result.length) {
       useVoted(true);
     } else {
