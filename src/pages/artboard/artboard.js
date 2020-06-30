@@ -27,6 +27,7 @@ export default ({route, navigation}) => {
     useVoted(false);
   };
   const favState = () => {
+    // console.log(fav);
     const result = fav.filter(el => el.id === route.params.id);
     if (result.length) {
       useVoted(true);
