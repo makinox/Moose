@@ -13,7 +13,7 @@ export default ({route, navigation}) => {
   const [cols, useCols] = useState(['#ffffff', '#ffffff']);
   const [voted, useVoted] = useState(false);
   const updateCols = () => {
-    colorsFromUrl(route.params.img).then(colors => {
+    colorsFromUrl(route.params.urls.thumb).then(colors => {
       useCols([colors.averageColor, colors.dominantColor, colors.vibrantColor, colors.darkVibrantColor]);
       StatusBar.setBackgroundColor(colors.averageColor, true);
       useCol(colors.darkVibrantColor);
@@ -28,7 +28,7 @@ export default ({route, navigation}) => {
     useVoted(false);
   };
   const favState = () => {
-    // console.log(fav);
+    console.log(route.params);
     const result = fav.filter(el => el.id === route.params.id);
     if (result.length) {
       useVoted(true);
@@ -45,7 +45,7 @@ export default ({route, navigation}) => {
     return unsubscribe;
   }, [navigation]);
   const downloadImage = () => {
-    downloadImages(route.params.img);
+    downloadImages(route.params.urls.full);
   };
 
   return (
@@ -53,11 +53,11 @@ export default ({route, navigation}) => {
       <LinearGradient colors={cols} style={styles.safe}>
         <ScrollView>
           <View style={styles.headerContainer}>
-            <SubHeader title="El nombre elegido" />
+            <SubHeader title={route.params.id} />
           </View>
           <View style={styles.coverContainer}>
             <View style={styles.coverCard}>
-              <Image style={styles.cover} source={{uri: route.params.img}} />
+              <Image style={styles.cover} source={{uri: route.params.urls.small}} />
             </View>
           </View>
           <View style={styles.artTitleContainer}>

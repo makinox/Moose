@@ -24,7 +24,7 @@ const Favorites = ({navigation}) => {
       <SafeAreaView style={styles.safe}>
         <ScrollView contentContainerStyle={styles.container}>
           {fav.map((el, idx) => (
-            <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
+            <DashCard key={idx} image={el.urls.small} handlePress={() => handleRoute(el)} />
           ))}
         </ScrollView>
       </SafeAreaView>
