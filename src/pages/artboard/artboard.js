@@ -3,6 +3,7 @@ import styles from './styles';
 import {SubHeader} from '../../components';
 import {Text, FAB} from 'react-native-paper';
 import {AppContext} from '../../utils/context';
+import {downloadImages} from '../../utils/download';
 import {colorsFromUrl} from 'react-native-vibrant-color';
 import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView, View, Image, ScrollView, StatusBar} from 'react-native';
@@ -43,6 +44,9 @@ export default ({route, navigation}) => {
 
     return unsubscribe;
   }, [navigation]);
+  const downloadImage = () => {
+    downloadImages(route.params.img);
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -70,7 +74,7 @@ export default ({route, navigation}) => {
               <Text style={styles.activeText}>Favicon</Text>
             </View>
             <View style={styles.activeButton}>
-              <FAB style={styles.activeFab} icon="download" />
+              <FAB style={styles.activeFab} icon="download" onPress={downloadImage} />
               <Text style={styles.activeText}>Descargar</Text>
             </View>
           </View>
