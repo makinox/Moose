@@ -8,8 +8,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView, View, Image, ScrollView, StatusBar} from 'react-native';
 
 export default ({route, navigation}) => {
-  const {useCol} = React.useContext(AppContext);
+  const {useCol, fav, useFav} = React.useContext(AppContext);
   const [cols, useCols] = useState(['#ffffff', '#ffffff']);
+  const [voted, useVoted] = useState(false);
   const updateCols = () => {
     colorsFromUrl(route.params.img).then(colors => {
       useCols([colors.averageColor, colors.dominantColor, colors.vibrantColor, colors.darkVibrantColor]);
@@ -17,11 +18,33 @@ export default ({route, navigation}) => {
       useCol(colors.darkVibrantColor);
     });
   };
-  const addFavorite = () => console.log(route.params);
+  const addFavorite = () => {
+    const newFav = fav;
+    newFav.push(route.params);
+    useFav(newFav);
+    useVoted(true);
+  };
+  const deleteFavorite = () => {
+    const result = fav.filter(el => el.id !== route.params.id);
+    // console.log({delete: true, result});
+    useFav(result);
+    useVoted(false);
+  };
+  const favState = () => {
+    const result = fav.filter(el => el.id === route.params.id);
+    // console.log(result.length);
+    if (result.length) {
+      useVoted(true);
+    } else {
+      useVoted(false);
+    }
+  };
   useEffect(() => {
+    favState();
     const unsubscribe = navigation.addListener('focus', () => {
       updateCols();
     });
+
     return unsubscribe;
   }, [navigation]);
 
@@ -43,7 +66,11 @@ export default ({route, navigation}) => {
           </View>
           <View style={styles.buttonContainer}>
             <View style={styles.activeButton}>
-              <FAB style={styles.activeFab} icon="heart-outline" onPress={addFavorite} />
+              {voted ? (
+                <FAB style={styles.activeFab} icon="heart-outline" color="red" onPress={deleteFavorite} />
+              ) : (
+                <FAB style={styles.activeFab} icon="heart-outline" onPress={addFavorite} />
+              )}
               <Text style={styles.activeText}>Favicon</Text>
             </View>
             <View style={styles.activeButton}>

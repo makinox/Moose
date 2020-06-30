@@ -8,7 +8,7 @@ import {AppContext} from '../../utils/context';
 const Favorites = ({navigation}) => {
   const bg1 = '#d81b60';
   const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
-  const {infoList} = useContext(AppContext);
+  const {fav} = useContext(AppContext);
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       StatusBar.setBackgroundColor(bg1, true);
@@ -23,7 +23,7 @@ const Favorites = ({navigation}) => {
       </Appbar.Header>
       <SafeAreaView style={styles.safe}>
         <ScrollView contentContainerStyle={styles.container}>
-          {infoList.map((el, idx) => (
+          {fav.map((el, idx) => (
             <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
           ))}
         </ScrollView>
