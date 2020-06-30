@@ -32,7 +32,7 @@ export default ({route, navigation}) => {
             <SubHeader title="El nombre elegido" />
           </View>
           <View style={styles.coverContainer}>
-            <View>
+            <View style={styles.coverCard}>
               <Image style={styles.cover} source={{uri: route.params.img}} />
             </View>
           </View>
@@ -48,10 +48,6 @@ export default ({route, navigation}) => {
             <View style={styles.activeButton}>
               <FAB style={styles.activeFab} icon="download" />
               <Text style={styles.activeText}>Descargar</Text>
-            </View>
-            <View style={styles.activeButton}>
-              <FAB style={styles.activeFab} icon="account-outline" />
-              <Text style={styles.activeText}>Perfil</Text>
             </View>
           </View>
         </ScrollView>

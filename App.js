@@ -19,7 +19,7 @@ const Home = () => (
 
 const TabNav = () => {
   const {col, useCol} = React.useContext(AppContext);
-  console.log(col);
+  // console.log(col);
   return (
     <Tab.Navigator shifting={true} initialRouteName="Home" barStyle={{backgroundColor: col}}>
       <Tab.Screen
