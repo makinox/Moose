@@ -4,6 +4,7 @@ import {AppContext} from '../../utils/context';
 import {Appbar, withTheme} from 'react-native-paper';
 import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
 import {SubHeader, DashCard, CardContainer} from '../../components';
+import {getCollections} from '../../utils/api';
 
 const Dashboard = ({navigation}) => {
   const {useCol, infoList} = React.useContext(AppContext);
@@ -11,6 +12,7 @@ const Dashboard = ({navigation}) => {
   const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
 
   useEffect(() => {
+    getCollections();
     const unsubscribe = navigation.addListener('focus', () => {
       StatusBar.setBackgroundColor(bg1, true);
       useCol(bg1);
