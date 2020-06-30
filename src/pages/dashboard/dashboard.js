@@ -6,15 +6,9 @@ import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
 import {SubHeader, DashCard, CardContainer} from '../../components';
 
 const Dashboard = ({navigation}) => {
+  const {useCol, infoList} = React.useContext(AppContext);
   const bg1 = '#ffffff';
-  const info = [
-    {title: 'Primera', subtitle: 'Prime', img: 'https://picsum.photos/id/1056/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1001/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1000/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1013/150/180'},
-  ];
   const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
-  const {useCol} = React.useContext(AppContext);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -35,7 +29,7 @@ const Dashboard = ({navigation}) => {
           <CardContainer>
             <SubHeader title="Mas populares" />
             <ScrollView horizontal={true}>
-              {info.map((el, idx) => (
+              {infoList.map((el, idx) => (
                 <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
               ))}
             </ScrollView>
@@ -44,7 +38,7 @@ const Dashboard = ({navigation}) => {
           <CardContainer>
             <SubHeader title="Mas nuevas" />
             <ScrollView horizontal={true}>
-              {info.map((el, idx) => (
+              {infoList.map((el, idx) => (
                 <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
               ))}
             </ScrollView>
@@ -53,7 +47,7 @@ const Dashboard = ({navigation}) => {
           <CardContainer>
             <SubHeader title="Mas bonitas" />
             <ScrollView horizontal={true}>
-              {info.map((el, idx) => (
+              {infoList.map((el, idx) => (
                 <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
               ))}
             </ScrollView>

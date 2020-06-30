@@ -17,6 +17,7 @@ export default ({route, navigation}) => {
       useCol(colors.darkVibrantColor);
     });
   };
+  const addFavorite = () => console.log(route.params);
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       updateCols();
@@ -42,7 +43,7 @@ export default ({route, navigation}) => {
           </View>
           <View style={styles.buttonContainer}>
             <View style={styles.activeButton}>
-              <FAB style={styles.activeFab} icon="heart-outline" />
+              <FAB style={styles.activeFab} icon="heart-outline" onPress={addFavorite} />
               <Text style={styles.activeText}>Favicon</Text>
             </View>
             <View style={styles.activeButton}>

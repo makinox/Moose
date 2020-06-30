@@ -1,21 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import {Appbar, withTheme} from 'react-native-paper';
 import DashCard from '../../components/dashCard/dashCard';
 import styles from '../favorites/styles';
+import {AppContext} from '../../utils/context';
 
 const Favorites = ({navigation}) => {
   const bg1 = '#d81b60';
-  const info = [
-    {title: 'Primera', subtitle: 'Prime', img: 'https://picsum.photos/id/1056/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1001/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1000/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1013/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1015/150/180'},
-    {title: 'Senconda', subtitle: 'Second', img: 'https://picsum.photos/id/1019/150/180'},
-  ];
   const handleRoute = itemInfo => navigation.navigate('Art', {...itemInfo});
-
+  const {infoList} = useContext(AppContext);
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       StatusBar.setBackgroundColor(bg1, true);
@@ -30,7 +23,7 @@ const Favorites = ({navigation}) => {
       </Appbar.Header>
       <SafeAreaView style={styles.safe}>
         <ScrollView contentContainerStyle={styles.container}>
-          {info.map((el, idx) => (
+          {infoList.map((el, idx) => (
             <DashCard key={idx} image={el.img} handlePress={() => handleRoute(el)} />
           ))}
         </ScrollView>
