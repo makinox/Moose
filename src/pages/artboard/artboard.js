@@ -58,7 +58,8 @@ export default ({route, navigation}) => {
           </View>
           <View style={styles.coverContainer}>
             <View style={styles.coverCard}>
-              <Image style={styles.cover} source={{uri: route.params.urls.small}} />
+              {/* {console.log(route.params.urls)} */}
+              <Image style={styles.cover} source={{uri: route.params.urls.regular}} />
             </View>
           </View>
           {/* <View style={styles.artTitleContainer}>

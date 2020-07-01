@@ -6,5 +6,8 @@ export default StyleSheet.create({
   },
   container: {
     alignItems: 'center',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });

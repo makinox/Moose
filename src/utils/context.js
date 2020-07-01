@@ -60,9 +60,9 @@ export const AppProvider = ({children}) => {
       .then(res => {
         useFav(JSON.parse(res));
         AsyncStorage.clear();
-        console.log({start: true, res: JSON.parse(res)});
+        // console.log({start: true, res: JSON.parse(res)});
       })
-      .catch(() => console.log('Clear'));
+      .catch(() => true);
   }, []);
 
   return (
