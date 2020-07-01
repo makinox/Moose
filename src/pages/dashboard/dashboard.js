@@ -13,7 +13,6 @@ const Dashboard = ({navigation}) => {
 
   useEffect(() => {
     getCollections().then(res => {
-      // console.log(res);
       useSplash(res);
     });
     const unsubscribe = navigation.addListener('focus', () => {
