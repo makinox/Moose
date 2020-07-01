@@ -26,7 +26,7 @@ const Dashboard = ({navigation}) => {
     <>
       <StatusBar backgroundColor={bg1} barStyle="dark-content" />
       <Appbar.Header style={styles.header}>
-        <Appbar.Content title="Muse" />
+        <Appbar.Content title="Moose" />
       </Appbar.Header>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollSection}>
@@ -36,7 +36,11 @@ const Dashboard = ({navigation}) => {
               <SubHeader title={sp.title} description={sp.description} avatar={sp.cover.urls.thumb} />
               <ScrollView horizontal={true}>
                 {sp.preview.map((el, idx) => (
-                  <DashCard key={idx} image={el.urls.small} handlePress={() => handleRoute(el)} />
+                  <DashCard
+                    key={idx}
+                    image={el.urls.small}
+                    handlePress={() => handleRoute({...el, title: sp.title, description: sp.description, avatar: sp.cover.urls.thumb})}
+                  />
                 ))}
               </ScrollView>
             </CardContainer>

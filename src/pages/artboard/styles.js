@@ -18,6 +18,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 80,
     marginRight: 30,
     marginLeft: 30,
   },

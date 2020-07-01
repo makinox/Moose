@@ -54,17 +54,17 @@ export default ({route, navigation}) => {
       <LinearGradient colors={cols} style={styles.safe} start={{x: 0.0, y: 0.0}} end={{x: 0.1, y: 1}}>
         <ScrollView>
           <View style={styles.headerContainer}>
-            <SubHeader title={route.params.id} />
+            <SubHeader title={route.params.title} description={route.params.description} avatar={route.params.avatar} />
           </View>
           <View style={styles.coverContainer}>
             <View style={styles.coverCard}>
               <Image style={styles.cover} source={{uri: route.params.urls.small}} />
             </View>
           </View>
-          <View style={styles.artTitleContainer}>
+          {/* <View style={styles.artTitleContainer}>
             <Text style={styles.artTitle}>Titulo de la imagen</Text>
             <Text style={styles.artSubtitle}>Subtitulo de la imagen</Text>
-          </View>
+          </View> */}
           <View style={styles.buttonContainer}>
             <View style={styles.activeButton}>
               {voted ? (
@@ -72,7 +72,7 @@ export default ({route, navigation}) => {
               ) : (
                 <FAB style={styles.activeFab} icon="heart-outline" onPress={addFavorite} />
               )}
-              <Text style={styles.activeText}>Favicon</Text>
+              <Text style={styles.activeText}>Fav</Text>
             </View>
             <View style={styles.activeButton}>
               <FAB style={styles.activeFab} icon="download" onPress={downloadImage} />
