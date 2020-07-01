@@ -33,7 +33,7 @@ const Dashboard = ({navigation}) => {
         <ScrollView style={styles.scrollSection}>
           {splash.map((sp, ixx) => (
             <CardContainer key={ixx}>
-              {console.log(sp)}
+              {/* {console.log(sp)} */}
               <SubHeader title={sp.title} description={sp.description} avatar={sp.cover.urls.thumb} />
               <ScrollView horizontal={true}>
                 {sp.preview.map((el, idx) => (

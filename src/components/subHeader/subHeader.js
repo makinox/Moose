@@ -11,7 +11,7 @@ export default ({title, description, avatar = ''}) => (
       <Avatar.Text size={50} label="xd" style={styles.subAvatar} />
     )}
     <View>
-      {console.log(avatar)}
+      {/* {console.log(avatar)} */}
       <Title style={styles.title}>{title}</Title>
       <Text style={styles.subTitle}>{description}</Text>
     </View>

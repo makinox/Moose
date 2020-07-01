@@ -14,9 +14,10 @@ export default ({route, navigation}) => {
   const [voted, useVoted] = useState(false);
   const updateCols = () => {
     colorsFromUrl(route.params.urls.thumb).then(colors => {
-      useCols([colors.averageColor, colors.dominantColor, colors.vibrantColor, colors.darkVibrantColor]);
-      StatusBar.setBackgroundColor(colors.averageColor, true);
-      useCol(colors.darkVibrantColor);
+      // useCols([colors.averageColor, colors.dominantColor, colors.vibrantColor, colors.darkVibrantColor]);
+      useCols(['#ffffff', colors.vibrantColor]);
+      StatusBar.setBackgroundColor('#ffffff', true);
+      useCol(colors.vibrantColor);
     });
   };
   const addFavorite = () => {
@@ -50,7 +51,7 @@ export default ({route, navigation}) => {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <LinearGradient colors={cols} style={styles.safe}>
+      <LinearGradient colors={cols} style={styles.safe} start={{x: 0.0, y: 0.0}} end={{x: 0.1, y: 1}}>
         <ScrollView>
           <View style={styles.headerContainer}>
             <SubHeader title={route.params.id} />
