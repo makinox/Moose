@@ -1,4 +1,4 @@
-package com.moose;
+package moose.jesusbossa.dev;
 
 import com.facebook.react.ReactActivity;
 
