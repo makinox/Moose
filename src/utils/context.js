@@ -17,7 +17,7 @@ export const AppProvider = ({children}) => {
     {
       title: '',
       description: '',
-      cover: {},
+      cover: {urls: {}},
       tags: [],
       preview: [],
     },
